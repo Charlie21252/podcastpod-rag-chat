@@ -8,14 +8,6 @@ from langchain.docstore.document import Document
 from langchain_community.llms import Ollama
 from langchain.prompts import PromptTemplate
 
-def clean_response(text):
-    """Remove thinking tags and other unwanted formatting from model responses"""
-    # Remove <think>...</think> blocks
-    cleaned = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL)
-    # Remove extra whitespace and newlines
-    cleaned = re.sub(r'\n\s*\n', '\n', cleaned)
-    return cleaned.strip()
-
 # Load documents with enhanced metadata
 docs = []
 transcript_folder = "transcripts"
@@ -118,7 +110,7 @@ PROMPT = PromptTemplate(
     input_variables=["context", "question"]
 )
 
-# Create QA chain with custom prompt
+# QA chain with custom prompt
 qa_chain = RetrievalQA.from_chain_type(
     llm=chat_model,
     chain_type="stuff",
@@ -146,19 +138,16 @@ while True:
         if not query.strip():
             continue
         
-        print("\n Searching through episodes...")
+        print("\nSearching through episodes...")
         result = qa_chain.invoke({"query": query})
         
-        # Clean the response
-        clean_answer = clean_response(result["result"])
-        
         # Display results
-        print(f"\n Answer: {clean_answer}")
+        print(f"\nAnswer: {result['result']}")
         
         # Show sources with episode info
         sources = result["source_documents"]
         if sources:
-            print(f"\n Sources ({len(sources)} relevant chunks found):")
+            print(f"\nSources ({len(sources)} relevant chunks found):")
             episode_sources = set()
             for doc in sources:
                 episode = doc.metadata.get("episode", "Unknown")
