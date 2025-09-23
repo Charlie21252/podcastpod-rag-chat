@@ -1,0 +1,42 @@
+# Virtual Environment
+venv/
+env/
+.env
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Chroma Database (vector database files)
+chroma_db/
+
+# Transcript files (optional - you might want to include some sample transcripts)
+# transcripts/*.txt
+
+# Temporary files
+temp_*
+*.tmp
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Model files (if you download any large models locally)
+*.bin
+*.gguf
+*.safetensors
+
+# API keys or config files with sensitive data
+config.ini
+secrets.json
