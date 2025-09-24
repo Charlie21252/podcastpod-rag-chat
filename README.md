@@ -10,12 +10,12 @@ This RAG application allows you to chat with podcast episodes as if you're havin
 Full demo Demo- 
 
 <!-- Sample Conversation -->
-==================================================
+
 🎧 Will & Rusty's Playdate RAG Chat 🎧
-==================================================
+
 Ask questions about the podcast episodes!
 Type 'exit' or 'quit' to end the conversation
-==================================================
+
 
 Your question: Who are the hosts of this podcast?
 
